@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>PDF Certificate Generator</title>
+        <link rel="stylesheet" type='text/css' href="public/styles/main.css">
+    </head>
+
+    <body>
+        <header>
+            <div class="header">
+                <h1 class="text-logo title">PDF Generator</h1>
+            </div>
+        </header>
+
+
+        <form action='/generate' method="POST" id="configuration-form" enctype="multipart/form-data">
+
+            <label for="preferredName" class="input-catch">
+                <input type="text" name="preferredName" autocomplete="nope"/>
+            </label>
+
+            <label for='filePrefix' class="input-container">File Prefix
+                <input type='text' name='filePrefix' autocomplete="nope" placeholder="file_prefix_...csv"/>
+            </label>
+
+            <label for="csvUpload" class="input-container">CSV Upload
+                <input type="file" name="csvUpload" accept="text/csv, .csv"/>
+            </label>
+
+            <label for='pdfTemplate' class="input-container">Certificate Template
+                <select name="pdfTemplate">
+                    <option value='' disabled selected>Select A Template</option>
+
+                    <optgroup label="BadgeHire">
+                        <option value='cert-of-completion-bh'>Certificate of Completion (BH)</option>
+                    </optgroup>
+
+                    <optgroup label="TNT Security Solutions">
+                        <option value='cert-of-completion-tnt'>Certificate of Completion (TNT)</option>
+                    </optgroup>
+
+                    <optgroup label="Combo">
+                        <option value='cert-of-completion-combo'>Certificate of Completion (Combo)</option>
+                    </optgroup>
+                </select>
+            </label>
+
+            <!-- Optional / Hidden Fields -->
+
+            <label class="input-container optional hidden" for="courseTitle">Course Title
+                <textarea name="courseTitle"></textarea>
+            </label>
+
+            <label class="input-container optional hidden" for="courseDate">Course Date
+                <input type="date" name="courseDate" />
+            </label>
+
+            <label class="input-container optional hidden" for="courseLocation">Course Location
+                <input type="text" name="courseLocation" />
+            </label>
+
+            <label class="input-container optional hidden" for="instructorName">Instructor Name
+                <input type="text" name="instructorName" />
+            </label>
+
+            <label class="input-container optional hidden" for="instructorTitle">Instructor Title
+                <input type="text" name="instructorTitle" />
+            </label>
+
+        </form>
+
+        <div id="config-controls">
+            <button type="button" class="button button-primary" id="config-submit">Generate</button>
+            <button type="button" class="button button-secondary" id="config-reset">Reset</button>
+        </div>
+
+        <a href="/download/csv-template" id="csv-download" target="_blank" download>Download CSV Template Here</a>
+
+        <script text='type/javascript' src="public/scripts/generation.js"></script>
+    </body>
+</html>

@@ -1,0 +1,150 @@
+@import "reset.css";
+@import "variables.css";
+@import "buttons.css";
+
+body, html {
+    background-color: var(--background);
+}
+
+.title {
+    color: var(--text);
+    font-size: clamp(28px, 2.25rem, 36px);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+}
+.subtitle {
+    color: var(--text);
+    font-size: clamp(22px, 1.75rem, 26px);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 700;
+}
+.copy {
+    color: var(--text);
+    font-size: clamp(15px, 1.17rem, 20px);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+}
+label {
+    color: var(--text);
+    font-size: clamp(15px, 1.17rem, 20px);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+}
+input, textarea {
+    color: var(--text);
+    font-size: clamp(15px, 1.17rem, 20px);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+    background-color: var(--background);
+    border: none;
+}
+
+header {
+    height: fit-content;
+    padding: 2rem 0;
+}
+.header {
+    margin: auto;
+    width: 100vw;
+    max-width: 1000px;
+
+    position: relative;
+}
+.header .text-logo {
+    position: absolute;
+    height: 50px;
+    width: fit-content;
+    top: calc(50% - 25px);
+    left: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+.header .menu {
+    position: absolute;
+    height: 50px;
+    width: fit-content;
+    top: calc(50% - 25px);
+    right: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    column-gap: 1.5rem;
+}
+.header .menu .link {
+    text-decoration: none;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    row-gap: 1rem;
+}
+.input-container  input{
+    width: 450px;
+    outline: 1px solid var(--text);
+    padding: 5px;
+}
+.input-container textarea {
+    width: 450px;
+    outline: 1px solid var(--text);
+    padding: 5px;
+    resize: vertical;
+    min-height: 1rem;
+    max-height: 3rem;
+}
+.input-container select {
+    width: 450px;
+    outline: 1px solid var(--text);
+    background-color: var(--background);
+    color: var(--text);
+    padding: 5px;
+    font-size: clamp(15px, 1.17rem, 20px);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+}
+
+
+#configuration-form {
+    margin: 3rem auto;
+    padding: 2rem 0;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 1rem;
+    background-color: var(--secondary);
+    position: relative;
+}
+#configuration-form .input-catch {
+    height: 1px;
+    width: 1px;
+    position: absolute;
+    top: 0;
+    left: -9999px;
+}
+#config-controls {
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 3rem;
+}
+
+#csv-download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    text-decoration: underline;
+    margin: 2rem auto;
+    color: var(--text);
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.hidden {
+    display: none !important;
+}

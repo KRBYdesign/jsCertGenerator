@@ -1,0 +1,16 @@
+:root {
+    --text: hsl(0, 0%, 92%);
+    --background: hsl(210, 6%, 13%);
+    --primary: hsl(210, 35%, 50%);
+    --secondary: hsl(210, 3%, 30%);
+    --accent: hsl(273, 61%, 66%);
+
+    --green: hsl(92, 52%, 57%);
+    --red: hsl(0, 83%, 64%);
+
+    --ani-short: all ease 120ms;
+    --ani-medium: all ease 250ms;
+    --ani-long: all ease 400ms;
+
+    --shadow-light: 0 0 5px hsl(0, 0%, 92%, 35%);
+}

@@ -1,0 +1,49 @@
+.button {
+    border: none;
+    border-radius: 0;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.17rem;
+    padding: 1rem 3rem;
+    cursor: pointer;
+    min-width: 220px;
+}
+.button:hover {
+    box-shadow: var(--shadow-light);
+}
+.button-primary {
+    background-color: var(--primary);
+    color: var(--text);
+}
+.button-secondary {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+.button-accent {
+    background-color: var(--accent);
+    color: var(--text);
+}
+.button:disabled {
+    background-color: #aaa;
+}
+
+@keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+}
+
+#loading {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, .3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+}
