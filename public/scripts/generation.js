@@ -74,6 +74,7 @@ certSelection.addEventListener('change', async () => {
 
     // get the instructions for the selected template
     const url = `/storage/data/${selectedCertificate}.json`;
+    console.log(`Fetching ${url}`);
 
     // console.log('Fetching data...', url);
     fetch(url)
