@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>PDF Certificate Generator</title>
+        <link rel="stylesheet" type='text/css' href="public/styles/main.css">
+
+        <style>
+            #download-container {
+                margin: 5rem auto;
+                width: fit-content;
+                display: flex;
+                flex-direction: column;
+                row-gap: 2rem;
+                align-items: center;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="header">
+                <h1 class="text-logo title">PDF Generator</h1>
+            </div>
+        </header>
+
+        <div id='download-container'>
+            <p class='title'>Your File is Ready</p>
+            <p class='copy'>Please note, your file is only available for 10 minutes and will be deleted.</p>
+
+            <a href="" id='download-button' class='button button-primary'>Download Your File</a>
+
+            <a href="/" class='button button-secondary'>Generate Another PDF</a>
+        </div>
+
+        <script text='type/javascript' src="public/scripts/success.js"></script>
+    </body>
+</html>

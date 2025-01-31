@@ -25,22 +25,22 @@ async function generatePDF(csvFile, filePrefix, template, details) {
 
         let fileName;
         try {
-            fileName = generateFileName(csvFile.filename);
+            fileName = `${filePrefix}_${generateFileName(csvFile.filename)}.pdf`;
         } catch (err) {
             resolve({
-                "status" : err.code,
+                "status" : 500,
                 "message" : err.message
             });
         }
 
         // create the write stream for the document
-        const filePath = path.join(saveDir, filePrefix + '_' + fileName + '.pdf');
+        const filePath = path.join(saveDir, fileName);
         doc.pipe(fs.createWriteStream(filePath));
 
         // parse the csv file
         // csvRows will come as an array of JSON objects
         let csvRows = await parseCSV(csvFile);
-        console.log("CSV Data", csvRows);
+        // console.log("CSV Data", csvRows);
 
         // pull the details for the template
         let templateData, templateFields, buildInstructions = null;
@@ -80,7 +80,7 @@ async function generatePDF(csvFile, filePrefix, template, details) {
             let firstName = row.First;
             let lastName = row.Last;
 
-            console.log("Adding row for", firstName, lastName);
+            // console.log("Adding row for", firstName, lastName);
             // loop through the names to create pages then generate the right page based off the template info
             doc.addPage();
 
@@ -90,7 +90,7 @@ async function generatePDF(csvFile, filePrefix, template, details) {
                 doc.image(buildInstructions['banner-image'], (doc.page.width - imageWidth) / 2, 36, { width: imageWidth });
                 doc.moveDown(10);
             } else {
-                console.log("No banner required");
+                // console.log("No banner required");
             }
 
             // add the certificate title if the template requires one
@@ -115,7 +115,7 @@ async function generatePDF(csvFile, filePrefix, template, details) {
             // write the additional details to the doc
             let fieldValue, fontName, fontSize, fontAlign, fontSpacing = null;
             for (let field in templateFields) {
-                console.log("Field", templateFields[field]);
+                // console.log("Field", templateFields[field]);
 
                 // get values and details for each field
                 fieldValue = details[field];
@@ -124,10 +124,10 @@ async function generatePDF(csvFile, filePrefix, template, details) {
                 fontAlign = templateFields[field].align ?? 'center';
                 fontSpacing = templateFields[field].spacing ?? 1;
 
-                console.log({
-                    "value" : fieldValue,
-                    "font" : [fontName, fontSize, fontAlign],
-                });
+                // console.log({
+                //    "value" : fieldValue,
+                //    "font" : [fontName, fontSize, fontAlign],
+                // });
 
                 // draw the signature line first if the field is the instructor name
                 if (field === 'instructorName') {
@@ -158,7 +158,7 @@ async function generatePDF(csvFile, filePrefix, template, details) {
         // return an object with a status and a way to send the download link or something
         resolve({
             'status' : 200,
-            'download' : filePath
+            'filename' : fileName.replace(".pdf", "")
         });
     });
 }

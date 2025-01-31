@@ -1,38 +1,41 @@
 {
   "fields" : {
     "courseTitle" : {
-      "font-family" : "Arial",
-      "font-weight" : 800,
-      "font-size" : 32,
-      "text-align" : "center"
+      "family" : "Helvetica-Bold",
+      "size" : 16,
+      "align" : "center",
+      "spacing" : 1
     },
     "courseLocation" : {
-      "font-family" :  "Arial",
-      "font-weight" :  500,
-      "font-size" :  12,
-      "text-align" :  "center"
+      "family" : "Helvetica",
+      "size" : 14,
+      "align" : "center",
+      "spacing" : 0.1
     },
     "courseDate" : {
-      "font-family" :  "Arial",
-      "font-weight" :  500,
-      "font-size" :  12,
-      "text-align" :  "center"
+      "family" : "Helvetica",
+      "size" : 14,
+      "align" : "center",
+      "spacing" : 10
+
     },
     "instructorName" : {
-      "font-family" :  "Arial",
-      "font-weight" :  500,
-      "font-size" :  12,
-      "text-align" :  "center"
+      "family" : "Helvetica",
+      "size" : 12,
+      "align" : "center",
+      "spacing" : 0.1
+
     },
     "instructorTitle" :  {
-      "font-family" :  "Arial",
-      "font-weight" :  500,
-      "font-size" :  12,
-      "text-align" :  "center"
+      "family" : "Helvetica-Bold",
+      "size" : 12,
+      "align" : "center",
+      "spacing" : 1
+
     }
   },
   "build" : {
-    "template" : "storage/templates/certificates/cert-of-completion-tnt.html",
-    "name": "CertificateOfCompletion"
+    "title": "Certificate Of Completion",
+    "banner-image" : "storage/templates/images/tnt_security.png"
   }
 }

@@ -1,4 +1,4 @@
-const PORT = 3000;
+const PORT = 80;
 
 const express = require("express");
 const path = require('path');
@@ -34,6 +34,18 @@ app.get('/download/csv-template', function(_, res) {
     res.download(filePath, fileName);
 });
 
+// download the generated PDF file
+app.get('/download/:file', function (req, res) {
+    let filePath = "./storage/generated_docs/" + req.params.file + ".pdf";
+    let fileName = req.params.file.split("file-")[0] + '.pdf';
+
+    res.download(filePath, fileName);
+});
+
+app.get('/success', function (req, res) {
+    res.sendFile(path.join(__dirname, "/views/success.html"));
+});
+
 // Submit the generation form
 app.post('/generate', upload.single('csvUpload'), async function(req, res) {
     let prevPage = '/'; // save the previous page for redirect
@@ -52,7 +64,7 @@ app.post('/generate', upload.single('csvUpload'), async function(req, res) {
     // get the csv file
     const file = req.file;
 
-    console.log("Upload", file);
+    // console.log("Upload", file);
 
     let generatedPDF = await generatePDF(file, filePrefix, certTemplate, certDetails);
 
@@ -60,16 +72,12 @@ app.post('/generate', upload.single('csvUpload'), async function(req, res) {
     // res.redirect(prevPage);
     if (generatedPDF.status !== 200) {
         // error occured
-        // res.redirect(`/?e=${generatedPDF.status}`);
-        res.json({
-            'status' : generatedPDF.status,
-            'message' : generatedPDF.message
-        });
+        res.redirect('/?err=' + encodeURIComponent(generatedPDF.message));
     } else {
-        res.json(generatedPDF);
+        res.redirect('/success?file=' + encodeURIComponent(generatedPDF.filename));
     }
 
 });
 
-app.listen(PORT);
+app.listen(PORT, '0.0.0.0');
 console.log(`Server listening on port ${PORT}`);

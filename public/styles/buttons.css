@@ -10,6 +10,8 @@
     padding: 1rem 3rem;
     cursor: pointer;
     min-width: 220px;
+    font-family: Helvetica, Arial, san-serif;
+    text-decoration: none;
 }
 .button:hover {
     box-shadow: var(--shadow-light);
